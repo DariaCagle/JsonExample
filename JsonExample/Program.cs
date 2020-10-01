@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace JsonExample
@@ -37,7 +38,7 @@ namespace JsonExample
         public static string JsonSerialiser(User user)
         {
             var listOFProperties = user.GetType().GetProperties();
-            List<string> props = new List<string>();
+            var props = new List<string>();
             foreach (var prop in listOFProperties)
             {
                 if (prop.GetCustomAttribute<MyIgnoreAttribute>() == null)
@@ -47,7 +48,7 @@ namespace JsonExample
                 }
             }
             string result = JsonConvert.SerializeObject(props, Formatting.Indented);
-            if (props.Count == 0) return null;
+            if (props?.Any() == false) return null;
             return result;
         }
     }
