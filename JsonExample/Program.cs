@@ -1,13 +1,7 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JsonExample
 {
@@ -15,9 +9,9 @@ namespace JsonExample
     {
         static void Main(string[] args)
         {
-            User user = new User 
-            { 
-                Login = "SomeLogin", 
+            User user = new User
+            {
+                Login = "SomeLogin",
                 PassWord = "SomeComplicatedPassword",
                 FirstName = "John",
                 LastName = "Snow",
@@ -44,11 +38,11 @@ namespace JsonExample
         {
             var listOFProperties = user.GetType().GetProperties();
             List<string> props = new List<string>();
-            foreach (var prop in listOFProperties) 
+            foreach (var prop in listOFProperties)
             {
-                if(prop.GetCustomAttribute<MyIgnoreAttribute>() == null)
+                if (prop.GetCustomAttribute<MyIgnoreAttribute>() == null)
                 {
-                    string property = prop.Name + ": "+ prop.GetValue(user);
+                    string property = prop.Name + ": " + prop.GetValue(user);
                     props.Add(property);
                 }
             }

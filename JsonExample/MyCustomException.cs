@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JsonExample
 {
@@ -10,7 +6,7 @@ namespace JsonExample
     {
         public override string Message
         {
-            get { return $"No properties without {nameof(MyIgnoreAttribute)}!"; } 
+            get { return $"No properties without {nameof(MyIgnoreAttribute)}!"; }
         }
     }
 }
